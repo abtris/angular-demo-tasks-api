@@ -1,8 +1,24 @@
-<div class="hero-unit">
+<div class="row">
   <h1>Tasks!</h1>
   <p>You now have connect to Apiary.io</p>
   <h2>GET /tasks</h2>
-  <pre>
-    {{status | json}}
-  </pre>
+  <a ng-click="getAll()">Fetch All</a>
+  <div>
+  <div class="span5">
+    <ul>
+      <li ng-repeat="task in tasks.items">
+        <a ng-click="getTask(task.id)">{{task.name}}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="span5">
+    <pre ng-show="taskHidden">
+      {{tasks | json}}
+    </pre>
+    <pre ng-show="statusHidden">
+      {{status | json}}
+    </pre>
+  </div>
+  <br />
+  </div>
 </div>
