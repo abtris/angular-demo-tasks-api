@@ -1,19 +1,11 @@
 'use strict';
 
-angularDemoTasksApiApp.controller('MainCtrl', function($scope) {
-  $scope.awesomeThings = [
-    'HTML5 Boilerplate',
-    'AngularJS',
-    'Testacular'
-  ];
+angularDemoTasksApiApp.controller('MainCtrl', function($scope, $http) {
 
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'http://private-b5e4-abtris.apiary.io/tasks/');
+  $scope.status = "";
+  $http.get('http://private-b5e4-abtris.apiary.io/tasks/').success(function(data) {
+    $scope.status = data;
+  });
 
-  xhr.onreadystatechange = function () {
-    if (this.readyState == 4) {
-      alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
-    }
-  };
-  xhr.send("");
+
 });
