@@ -1,0 +1,53 @@
+HOST: http://tasks.dev/
+
+--- Tasks API v1 ---
+
+--
+Tasks 
+The following is a section of resources related to the tasks
+--
+
+List tasks
+GET /tasks/
+< 200
+< Content-Type: application/json
+{ "items": [
+  { "id": 1,"url": "/task/1", "name":"milk", "description": "buy 2 litres milk", "status": "uncompleted", "created_at": "122345455", "completed_at": "123444444" },
+  { "id": 2,"url": "/task/2", "name":"apples", "description": "buy 10 apples", "status": "uncompleted", "created_at": "122345455", "completed_at": "123444444" }
+] }
+
+Get task
+GET /task/{id}
+< 200
+< Content-Type: application/json
+{ "items": [
+  { "id": 3,"url": "/task/3", "name":"milk", "description": "buy 2 litres milk", "status": "uncompleted", "created_at": "122345455", "completed_at": "123444444" }
+] }
+
+
+
+Save task
+POST /task
+> Content-Type: application/json
+{ "id": 3,"name":"New popular", "description": "Lorem ipsum", "status": "uncompleted" }
+< 201
+< Content-Type: application/json
+{ "status": "created", "url": "/shopping-cart/2" }
+
+Update task
+PUT /task/{id}
+> Content-Type: application/json
+{ "name": "Old socks"}
+< 200
+< Content-Type: application/json
+{ "status": "updated", "url": "/task/1" }
+
+Remove task
+DELETE /task/{id}
+> Content-Type: application/json
+< 200
+< Content-Type: application/json
+{ "status":"ok" }
+
+
+
